@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Customer support playbook · Omniroam</title>
+  <link rel="stylesheet" href="manual.css">
+</head>
+<body>
+  <nav class="manual-nav"><div class="wrap"><a href="../index.html">← Founders' control room</a><strong>Support operations</strong></div></nav>
+  <header class="manual-hero"><div class="wrap"><p class="kicker">Customer support</p><h1>Common eSIM problems, clear ownership.</h1><p>The customer-facing categories, starting tier and supplier escalation route.</p></div></header>
+  <main class="wrap manual-content">
+    <aside class="toc"><strong>On this page</strong><a href="#routes">Case routes</a><a href="#boundary">Automation boundary</a><a href="#launch">Launch work</a></aside>
+    <div class="prose">
+      <section id="routes">
+        <h2>Case routes</h2>
+        <div class="table-wrap"><table><thead><tr><th>Customer topic</th><th>Starts at</th><th>First action</th><th>eSIMAccess category if escalated</th></tr></thead><tbody>
+          <tr><td>Device compatibility</td><td>Tier 1</td><td>Check eSIM support, carrier lock and destination coverage.</td><td>Device Capability</td></tr>
+          <tr><td>Phone or eSIM settings</td><td>Tier 1</td><td>Check mobile data, roaming, selected SIM, APN and software version.</td><td>Device Configuration</td></tr>
+          <tr><td>Installation or activation</td><td>Tier 2</td><td>Check installation state, exact error and whether the profile was deleted.</td><td>eSIM Activation</td></tr>
+          <tr><td>No data or poor connection</td><td>Tier 2, high priority</td><td>Check location, network selection, APN, roaming and remaining data.</td><td>Connectivity</td></tr>
+          <tr><td>Find my eSIM</td><td>Tier 1</td><td>Verify the customer privately and issue a new recovery link.</td><td>Use the underlying fault category</td></tr>
+          <tr><td>Add more data</td><td>Tier 1</td><td>Check whether the plan supports top-up. Offer a new plan when it does not.</td><td>Top Up</td></tr>
+          <tr><td>Payment or billing</td><td>Tier 2, high priority</td><td>Match the order, payment and fulfilment states before promising an outcome.</td><td>Portal/API Issue if records disagree</td></tr>
+          <tr><td>Refund request</td><td>Tier 3, human</td><td>Collect the facts and preserve Australian Consumer Law rights.</td><td>Refund Request</td></tr>
+          <tr><td>Something else</td><td>Tier 1</td><td>Read and classify the case.</td><td>Others</td></tr>
+        </tbody></table></div>
+        <div class="callout"><strong>Portal or API faults are internal.</strong><p>Customers never choose a supplier issue. Engineering or Tier 3 staff use that route when Omniroam's record and the supplier's record disagree, a webhook is missing or an API call fails repeatedly.</p></div>
+      </section>
+      <section id="boundary">
+        <h2>Automation boundary</h2>
+        <p>Tier 1 can provide compatibility checks, setup instructions, recovery guidance and top-up availability. Tier 2 can run structured activation and connectivity diagnostics. Tier 3 handles refunds, payment uncertainty, repeated provisioning failures, legal concerns and supplier disputes.</p>
+        <p>Automation may suggest the next check, collect safe details and draft a reply. It must not ask for card data, activation codes or full ICCIDs. It must not approve a refund or create another supplier order.</p>
+      </section>
+      <section id="launch">
+        <h2>Still required before live sales</h2>
+        <ul><li>monitored support inbox and reply delivery</li><li>case assignment, notes and safe attachments</li><li>missed-response and missed-resolution alerts</li><li>reviewed device-specific help articles</li><li>named Tier 3 owners, service hours and supplier contacts</li><li>one rehearsal for every category</li></ul>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

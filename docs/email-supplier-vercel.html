@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Email, supplier portability and Vercel · Omniroam</title>
+  <link rel="stylesheet" href="manual.css">
+</head>
+<body>
+  <nav class="manual-nav"><div class="wrap"><a href="../index.html">← Founders' control room</a><strong>Delivery architecture</strong></div></nav>
+  <header class="manual-hero"><div class="wrap"><p class="kicker">MVP delivery</p><h1>Our email, private supplier routing and one Vercel checklist.</h1><p>The current result, the honest portability limit and the manual founder work still required.</p></div></header>
+  <main class="wrap manual-content">
+    <aside class="toc"><strong>On this page</strong><a href="#email">Email</a><a href="#supplier">Supplier boundary</a><a href="#support">Support</a><a href="#turnstile">Turnstile</a><a href="#vercel">Vercel</a></aside>
+    <div class="prose">
+      <section id="email">
+        <h2>Transactional email</h2>
+        <div class="callout"><strong>Omniroam sends the customer email.</strong><p>We do not rely on eSIMAccess's customer email. Resend carries an Omniroam template with plan details, a private installation link, setup steps, a data-only explanation and a warning not to delete an installed eSIM.</p></div>
+        <p>The template includes HTML and plain text. Provider and database idempotency stop the same order email being sent twice during a retry. A real Gmail delivery test reached the recipient's mail server on 29 August 2026.</p>
+        <p>The production sender remains off because Resend reports goomniroam.com as not started. DNS authentication and a monitored reply inbox must be completed first.</p>
+      </section>
+      <section id="supplier">
+        <h2>How supplier-proof is it?</h2>
+        <div class="callout"><strong>The customer never sees or chooses the supplier.</strong><p>Checkout asks Omniroam to fulfil the purchased plan. Omniroam's private fulfilment configuration chooses the supplier connection. The customer sees only Omniroam, their plan, price, coverage and order status.</p></div>
+        <p>eSIMAccess now sits behind an internal adapter. A future supplier should require a new adapter, product mappings and protected credentials. Payment, email, recovery and customer pages should stay unchanged.</p>
+        <p>An endpoint-only swap is unlikely. Suppliers use different authentication, price units, order states, QR fields, webhooks, refunds and usage models. The adapter keeps those differences out of the customer experience.</p>
+        <h3>Remaining portability work</h3>
+        <ul><li>contract tests for every supplier connection</li><li>a neutral product-reference database migration</li><li>capability flags for top-up, phone numbers and cancellation</li><li>normalised webhooks and reconciliation</li><li>a second sandbox connection as proof</li></ul>
+      </section>
+      <section id="support">
+        <h2>Support routing</h2>
+        <p>Customer topics now cover device compatibility, device setup, activation, connectivity, order recovery, top-up, billing, refunds and other problems. Supplier portal or API problems stay internal. Refunds start with a person at Tier 3.</p>
+      </section>
+      <section id="turnstile">
+        <h2>Why checkout does not need Turnstile yet</h2>
+        <p>Opn tokenisation, server-side amount verification, idempotency, rate limits and payment fraud controls are better first-line checkout protections. A Turnstile challenge adds another failure point at the highest-value step. Use it first on recovery, support and privacy forms if abuse appears. Add it to checkout only when measured bot activity justifies the conversion cost.</p>
+      </section>
+      <section id="vercel">
+        <h2>One Vercel session at the end of the sprint</h2>
+        <p>The complete non-secret checklist is recorded in the source documentation. The practical order is: public settings, Opn test keys, eSIMAccess test settings, Neon, Resend, then one redeployment and one controlled end-to-end order.</p>
+        <div class="callout pale"><strong>Keep these off for now.</strong><p>GA and GTM, supplier writes, live Opn charges, automatic refunds, staff access and scheduled operations sweeps.</p></div>
+        <p>Cloudflare can wait. It does not block the MVP.</p>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
