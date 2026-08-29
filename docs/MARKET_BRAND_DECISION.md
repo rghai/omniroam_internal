@@ -59,7 +59,7 @@ These markets are credible alternatives, not rejected ideas. Australia wins the 
 | **Singapore** | 10.67m resident departures in 2025, including 8.85m by air | High travel frequency, English-first, strong Asia proximity | Smaller absolute customer base and likely stronger familiarity with regional roaming/eSIM options | Best small-market backup test after Australia; localise SGD pricing and compare carrier bundles first |
 | **United Kingdom** | 94.6m overseas visits and £78.6bn spend in 2024; Spain, France, and Italy alone received 31.9m visits | Very large, Europe-heavy demand that fits regional plans | Requires GBP commercial setup, UK-specific consumer/tax review, and a Europe-led proposition; official 2024 figures are still labelled “in development” | Phase-two Europe proposition after Australian conversion and support economics are known |
 | **United States** | 107.7m outbound travellers in 2024; 53.8m went overseas and 61% of those trips were holidays | Largest scale option, long average overseas stay of 15.3 nights, high reported traveller income | 54.0m trips went to Mexico or Canada, where incumbent-plan inclusion can weaken the eSIM pitch; launch competition and paid-acquisition complexity are much higher | Enter by destination or traveller segment, not as a broad national launch |
-| **Canada** | 42.9m visits abroad in 2024; separate border data recorded 13.0m overseas trips | English/French affluent travel market; overseas trips exceeded 2019 levels | Most outbound volume is US travel—30.2m of the 42.9m visits in the national survey—so the total overstates the relevant eSIM pool | Test an overseas-only proposition after the UK/US catalogue and support playbook exist |
+| **Canada** | 42.9m visits abroad in 2024; separate border data recorded 13.0m overseas trips | English/French affluent travel market; overseas trips exceeded 2019 levels | Most outbound volume is US travel:30.2m of the 42.9m visits in the national survey:so the total overstates the relevant eSIM pool | Test an overseas-only proposition after the UK/US catalogue and support playbook exist |
 
 ### Expansion priority
 
@@ -96,12 +96,12 @@ Australia should lose first-market status if the initial evidence shows any of t
 
 ## Sources and calculation notes
 
-- [Australian Bureau of Statistics — Overseas arrivals and departures, 2025–26](https://www.abs.gov.au/articles/overseas-arrivals-and-departures-australia-2025-26-financial-year). Trip totals, purpose, duration, destination volumes, and growth rates. Figures count trips/border crossings, not unique people.
-- [Telstra — International roaming](https://www.telstra.com.au/international-roaming), [Optus — daily roaming offer](https://www.optus.com.au/geo-offer), and [Vodafone Australia — international roaming](https://www.vodafone.com.au/support/plans/international-roaming). Carrier offers differ in eligibility and inclusions.
-- [Opn — Multi-currency](https://docs.opn.ooo/multi-currency). Account enablement and FX conditions must be reconfirmed before launch.
-- [Singapore Department of Statistics — outbound resident departures](https://data.gov.sg/datasets/d_90089b064caf754498b794466996c4c8/view).
-- [UK Office for National Statistics — Travel trends 2024](https://www.ons.gov.uk/peoplepopulationandcommunity/leisureandtourism/articles/traveltrends/2024). ONS labels the estimates official statistics in development and identifies country-level data quality caveats.
-- [US National Travel and Tourism Office — outbound traveller characteristics 2024](https://www.trade.gov/feature-article/us-outbound-travelers-characteristics-2024).
-- [Statistics Canada — Tourism activity 2024](https://www150.statcan.gc.ca/n1/pub/11-627-m/11-627-m2025047-eng.htm) and [Travel between Canada and other countries, December 2024](https://www150.statcan.gc.ca/n1/daily-quotidien/250221/dq250221b-eng.htm).
+- [Australian Bureau of Statistics : Overseas arrivals and departures, 2025–26](https://www.abs.gov.au/articles/overseas-arrivals-and-departures-australia-2025-26-financial-year). Trip totals, purpose, duration, destination volumes, and growth rates. Figures count trips/border crossings, not unique people.
+- [Telstra : International roaming](https://www.telstra.com.au/international-roaming), [Optus : daily roaming offer](https://www.optus.com.au/geo-offer), and [Vodafone Australia : international roaming](https://www.vodafone.com.au/support/plans/international-roaming). Carrier offers differ in eligibility and inclusions.
+- [Opn : Multi-currency](https://docs.opn.ooo/multi-currency). Account enablement and FX conditions must be reconfirmed before launch.
+- [Singapore Department of Statistics : outbound resident departures](https://data.gov.sg/datasets/d_90089b064caf754498b794466996c4c8/view).
+- [UK Office for National Statistics : Travel trends 2024](https://www.ons.gov.uk/peoplepopulationandcommunity/leisureandtourism/articles/traveltrends/2024). ONS labels the estimates official statistics in development and identifies country-level data quality caveats.
+- [US National Travel and Tourism Office : outbound traveller characteristics 2024](https://www.trade.gov/feature-article/us-outbound-travelers-characteristics-2024).
+- [Statistics Canada : Tourism activity 2024](https://www150.statcan.gc.ca/n1/pub/11-627-m/11-627-m2025047-eng.htm) and [Travel between Canada and other countries, December 2024](https://www150.statcan.gc.ca/n1/daily-quotidien/250221/dq250221b-eng.htm).
 
 Calculations are founder analysis from the cited official figures: 12,711,650 × 60.8% = 7,728,683 estimated holiday trips; the four destination volumes sum to 3,961,560; 100 ÷ 7,728,683 = 0.0013%; and 13 daily-pass days create the A$65–A$130 comparison anchor.

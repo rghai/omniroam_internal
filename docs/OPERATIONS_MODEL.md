@@ -15,7 +15,7 @@ The event layer feeds these records without coupling business logic to a specifi
 
 ## 1. Customer Support
 
-### Tier 1 — automated self-service
+### Tier 1 : automated self-service
 
 - answer approved product, compatibility, installation, coverage, and policy questions;
 - locate an order using a safe recovery flow;
@@ -24,7 +24,7 @@ The event layer feeds these records without coupling business logic to a specifi
 - gather device, destination, timing, and troubleshooting evidence;
 - hand off with a complete summary when confidence or permissions are insufficient.
 
-### Tier 2 — automated investigation
+### Tier 2 : automated investigation
 
 - correlate payment, internal order, supplier order, eSIM, usage, and notification events;
 - classify known payment, provisioning, installation, activation, network, and data issues;
@@ -32,7 +32,7 @@ The event layer feeds these records without coupling business logic to a specifi
 - prepare a replacement, refund, or supplier-escalation recommendation;
 - open and enrich a Tier 3 case instead of improvising outside a runbook.
 
-### Tier 3 — human
+### Tier 3 : human
 
 Humans handle refunds or credits, supplier write actions outside approved runbooks, legal or safety complaints, suspected fraud, account takeover, high-value exceptions, and unresolved Tier 2 cases. The automation can prepare evidence and a recommended response but cannot approve its own sensitive action.
 
@@ -40,7 +40,7 @@ Support must never reveal QR payloads, activation codes, payment tokens, supplie
 
 ## 2. Marketing and Growth
 
-Founders should have a simple control plane for brand tokens, approved page sections, destination content, campaign pages, lifecycle copy, featured plans, and SEO metadata. Prices, costs, networks, and coverage remain catalog data—not pasted marketing prose.
+Founders should have a simple control plane for brand tokens, approved page sections, destination content, campaign pages, lifecycle copy, featured plans, and SEO metadata. Prices, costs, networks, and coverage remain catalog data:not pasted marketing prose.
 
 Publishing workflow:
 
