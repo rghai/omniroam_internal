@@ -35,3 +35,11 @@ The intended control plane exposes safe, previewable settings for:
 - operational pause, quarantine, refund-approval, and escalation controls.
 
 Every published change should keep an immutable version, show who approved it, and support one-click rollback.
+
+## Google analytics
+
+- Google Tag Manager container: `GTM-WJ62HWC6`
+- Google Analytics 4 property: `G-G0PSHS6130`
+- Account owner: `karanghai@gmail.com`
+
+Google Analytics is configured inside Google Tag Manager. Do not add the direct Google Analytics script to the customer application. GTM is consent-gated through the analytics cookie category. The no-script iframe is deliberately omitted because it cannot honour a visitor's banner choice.

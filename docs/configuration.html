@@ -26,6 +26,7 @@
 <a href="#editable">Founder-editable</a>
 <a href="#secrets">Secret placeholders</a>
 <a href="#providers">Provider seams</a>
+<a href="#analytics">Analytics</a>
 <a href="#launch">Launch checklist</a>
 </aside>
 <article class="prose">
@@ -122,6 +123,15 @@
 <li>Emergency kill switch independent of deployment</li>
 </ul>
 </details>
+</section>
+<section id="analytics">
+<h2>Google analytics ownership and loading</h2>
+<ul>
+<li>Google Tag Manager container: <code>GTM-WJ62HWC6</code></li>
+<li>Google Analytics 4 property: <code>G-G0PSHS6130</code></li>
+<li>Account owner: <code>karanghai@gmail.com</code></li>
+</ul>
+<p>Google Analytics is configured inside Google Tag Manager. The customer application must not install the direct Google Analytics script because that would risk duplicate page views. GTM loads only when the analytics cookie category is allowed. Testing currently uses opt-out mode, with analytics enabled and marketing denied by default.</p>
 </section>
 <section id="launch">
 <h2>Before production</h2>
