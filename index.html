@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Omniroam — Founders’ Briefing</title>
+  <meta name="description" content="A plain-English founder briefing on Omniroam’s market, product, operations and next decisions.">
+  <style>
+    :root { --ink:#173f43; --deep:#122f32; --cream:#f7f0e6; --paper:#fffaf2; --coral:#ff6f61; --mint:#bfe9d8; --yellow:#ffc94a; --line:#dbcdbd; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--cream); color:#1d2b33; font-family:Arial,Helvetica,sans-serif; }
+    a { color:inherit; }
+    .hero { padding:44px clamp(22px,5vw,76px) 56px; background:var(--ink); color:var(--paper); border-bottom:8px solid var(--coral); }
+    .hero-grid { display:grid; grid-template-columns:minmax(0,1fr) 270px; gap:50px; align-items:end; max-width:1180px; margin:auto; }
+    .eyebrow,.heading p { margin:0 0 14px; color:var(--yellow); font-size:.76rem; font-weight:800; letter-spacing:.15em; text-transform:uppercase; }
+    h1 { max-width:790px; margin:0; font-size:clamp(2.7rem,7vw,5.8rem); line-height:.93; letter-spacing:-.065em; }
+    .lede { max-width:740px; margin:26px 0 0; color:#d7ece7; font-size:clamp(1.05rem,2vw,1.32rem); line-height:1.55; }
+    .stamp { display:grid; gap:9px; padding:22px; color:var(--ink); background:var(--mint); border:2px solid var(--paper); border-radius:22px; box-shadow:8px 8px 0 var(--coral); transform:rotate(1.5deg); }
+    .stamp span { font-size:.74rem; font-weight:800; letter-spacing:.13em; text-transform:uppercase; }
+    .stamp strong { font-size:1.15rem; }
+    .stamp small { opacity:.72; }
+    main section { max-width:1180px; margin:auto; padding:70px clamp(22px,4vw,52px) 0; }
+    .heading { margin-bottom:28px; }
+    .heading p { color:#d44d43; }
+    .heading h2 { max-width:850px; margin:0; font-size:clamp(1.9rem,4vw,3.35rem); line-height:1; letter-spacing:-.045em; }
+    .cards,.docs,.alternatives { display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
+    .card,.doc,.alternative { position:relative; padding:30px 32px; background:var(--paper); border:1px solid var(--line); border-radius:25px; box-shadow:0 9px 0 rgba(23,63,67,.08); }
+    .card { min-height:210px; overflow:hidden; }
+    .card:nth-child(2) { background:#ffe19a; }
+    .card:nth-child(3) { background:var(--mint); }
+    .card:nth-child(4) { background:#ffd4cf; }
+    .number { position:absolute; right:24px; top:10px; color:rgba(23,63,67,.1); font-size:5rem; font-weight:900; }
+    .card h3 { position:relative; max-width:470px; margin:35px 0 10px; font-size:1.45rem; }
+    .card p,.doc p,.doc li,.alternative p { position:relative; line-height:1.55; }
+    .verdict { margin-bottom:20px; padding:28px 30px; background:var(--ink); color:var(--paper); border-radius:24px; }
+    .verdict strong { display:block; margin-bottom:8px; color:var(--yellow); font-size:1.35rem; }
+    .verdict p { max-width:940px; margin:0; color:#d7ece7; font-size:1.05rem; line-height:1.6; }
+    .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+    .stat { padding:22px; background:var(--paper); border:1px solid var(--line); border-radius:19px; }
+    .stat strong { display:block; color:var(--ink); font-size:clamp(1.7rem,3vw,2.35rem); letter-spacing:-.04em; }
+    .stat span { display:block; margin-top:7px; color:#5d6d70; line-height:1.4; }
+    .evidence-note { margin:18px 0 0; color:#526568; font-size:.92rem; line-height:1.6; }
+    .alternatives { margin-top:18px; grid-template-columns:repeat(3,1fr); }
+    .alternative { min-height:220px; box-shadow:none; }
+    .alternative span { color:#d44d43; font-size:.74rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; }
+    .alternative h3 { margin:10px 0; font-size:1.45rem; }
+    .alternative strong { color:var(--ink); }
+    .table-wrap { overflow-x:auto; background:var(--paper); border:1px solid var(--line); border-radius:22px; }
+    table { width:100%; border-collapse:collapse; }
+    th,td { padding:18px 20px; text-align:left; border-bottom:1px solid #e5dacc; }
+    th { color:#5d6d70; font-size:.74rem; letter-spacing:.1em; text-transform:uppercase; }
+    tr:last-child td { border-bottom:0; }
+    .status { display:inline-flex; padding:7px 11px; background:var(--ink); color:var(--paper); border-radius:99px; font-size:.78rem; font-weight:800; }
+    .doc { display:flex; flex-direction:column; min-height:390px; box-shadow:none; }
+    .doc .label { color:#d44d43; font-size:.76rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+    .doc h3 { margin:10px 0 13px; font-size:1.65rem; letter-spacing:-.03em; }
+    details { margin:22px 0; padding:16px 0; border-block:1px solid #e5dacc; }
+    summary { cursor:pointer; font-weight:800; }
+    details ul { padding-left:20px; }
+    .source { margin-top:auto; font-size:.88rem; font-weight:800; text-underline-offset:4px; }
+    .next { padding-bottom:70px; }
+    .next ol { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; padding:0; list-style:none; counter-reset:item; }
+    .next li { position:relative; display:grid; gap:7px; padding:25px 25px 25px 70px; background:var(--ink); color:var(--paper); border-radius:19px; counter-increment:item; }
+    .next li:before { content:counter(item); position:absolute; left:23px; top:23px; display:grid; place-items:center; width:30px; height:30px; color:var(--ink); background:var(--yellow); border-radius:50%; font-weight:900; }
+    .next li span { color:#cde2dd; line-height:1.45; }
+    footer { display:flex; justify-content:space-between; gap:20px; padding:26px clamp(22px,5vw,76px); background:var(--deep); color:#d7ece7; font-size:.9rem; }
+    @media (max-width:880px) { .stats { grid-template-columns:repeat(2,1fr); } .alternatives { grid-template-columns:1fr; } }
+    @media (max-width:760px) { .hero-grid,.cards,.docs,.next ol { grid-template-columns:1fr; } .stamp { max-width:270px; margin-top:10px; } footer { flex-direction:column; } }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">Omniroam · founders’ progress briefing</p>
+        <h1>The whole project, without the technical fog.</h1>
+        <p class="lede">What we have decided, the numbers behind Australia, what is working, what remains deliberately switched off, and the few decisions that still need the founders.</p>
+      </div>
+      <aside class="stamp"><span>Shareable briefing</span><strong>Read-only progress view</strong><small>Updated 29 August 2026</small></aside>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="heading"><p>Right now</p><h2>The short version</h2></div>
+      <div class="cards">
+        <article class="card"><span class="number">01</span><h3>We have a quantified starting market.</h3><p>Australia offers 7.73 million estimated annual holiday trips and a strong match between the initial catalogue and real destination demand.</p></article>
+        <article class="card"><span class="number">02</span><h3>The buying experience works.</h3><p>The MVP can select a plan and complete an Opn test payment without risking a live supplier order.</p></article>
+        <article class="card"><span class="number">03</span><h3>The supplier connection works.</h3><p>A tightly bounded eSIMAccess experiment successfully provisioned a low-cost test profile. Live automation remains off.</p></article>
+        <article class="card"><span class="number">04</span><h3>Operations are designed in early.</h3><p>Support, monitoring, growth changes, reconciliation, and refunds have explicit human-versus-automation boundaries.</p></article>
+      </div>
+    </section>
+
+    <section>
+      <div class="heading"><p>Market decision</p><h2>Why Australia wins the first test</h2></div>
+      <div class="verdict"><strong>It is a measured launch wedge—not a feeling and not a forever decision.</strong><p>Australia is large enough to validate the product, highly leisure-led, closely aligned with our cheapest and strongest Asian catalogue, and gives us a clear saving story against A$5–A$10 daily roaming. We review the choice after 100 paid orders or 90 days.</p></div>
+      <div class="stats">
+        <article class="stat"><strong>12.71m</strong><span>Australian short-term resident trips in 2025–26</span></article>
+        <article class="stat"><strong>7.73m</strong><span>Estimated holiday trips, based on the 60.8% holiday share</span></article>
+        <article class="stat"><strong>3.96m</strong><span>Trips to Indonesia, Japan, Thailand, and Vietnam alone</span></article>
+        <article class="stat"><strong>13 days</strong><span>Median Australian holiday—A$65–A$130 at A$5–A$10/day</span></article>
+      </div>
+      <p class="evidence-note">At working prices of A$10.99–A$17.99, a data-only Omniroam plan could save roughly A$47–A$119 against those daily-pass anchors. The comparison is not like-for-like: carrier passes may include the customer's usual number, calls, SMS, and more daily data. <a href="docs/MARKET_BRAND_DECISION.md"><strong>Read the calculations and official sources →</strong></a></p>
+      <div class="alternatives">
+        <article class="alternative"><span>Fastest backup test</span><h3>Singapore</h3><p><strong>10.67m resident departures in 2025</strong>, including 8.85m by air. Strong travel frequency, English-first operations, and Asia proximity; smaller scale and likely tougher incumbent offers make it a controlled comparison rather than the first bet.</p></article>
+        <article class="alternative"><span>Best Europe expansion</span><h3>United Kingdom</h3><p><strong>94.6m overseas visits and £78.6bn spend in 2024.</strong> Huge Europe-led demand fits regional plans, but it adds GBP, UK consumer/tax work, and a new acquisition battlefield before we know baseline unit economics.</p></article>
+        <article class="alternative"><span>Largest long-term upside</span><h3>United States</h3><p><strong>107.7m outbound travellers in 2024</strong>, including 53.8m overseas. It is enormous but not a clean broad launch: Mexico and Canada alone account for 54.0m trips, and national customer acquisition is much more complex.</p></article>
+      </div>
+    </section>
+
+    <section>
+      <div class="heading"><p>Progress board</p><h2>What each status actually means</h2></div>
+      <div class="table-wrap"><table><thead><tr><th>Area</th><th>Status</th><th>Founder view</th></tr></thead><tbody>
+        <tr><td>Market direction</td><td><span class="status">Evidence-backed</span></td><td>Australia-first with explicit Singapore, UK, US, and Canada alternatives</td></tr>
+        <tr><td>Brand direction</td><td><span class="status">Working</span></td><td>Omniroam, Omi mascot, playful low-stress visual system</td></tr>
+        <tr><td>MVP storefront</td><td><span class="status">Live review</span></td><td><a href="https://omniroam-k5t59ei7d-omniroams-projects.vercel.app/" target="_blank" rel="noreferrer"><strong>Open the production Vercel deployment ↗</strong></a></td></tr>
+        <tr><td>Opn payments</td><td><span class="status">Tested</span></td><td>A real test-mode charge completed without live fulfilment</td></tr>
+        <tr><td>eSIMAccess</td><td><span class="status">Tested</span></td><td>A US$0.30 Thailand test eSIM provisioned successfully</td></tr>
+        <tr><td>Live automation</td><td><span class="status">Gated</span></td><td>Waiting for durable database and reconciliation controls</td></tr>
+      </tbody></table></div>
+    </section>
+
+    <section>
+      <div class="heading"><p>Decision library</p><h2>Plain English first. Detail when you want it.</h2></div>
+      <div class="docs">
+        <article class="doc"><span class="label">Who we sell to and how we show up</span><h3>Market and brand</h3><p>Start with Australian leisure travellers taking roughly 7–21 day trips. Lead with a friendly, low-stress promise and transparent prices—not telecom jargon.</p><details><summary>Explore the important decisions</summary><ul><li>Australia has enough holiday volume and unusually strong initial-destination fit.</li><li>Use a 100-order or 90-day evidence gate.</li><li>Keep Omniroam and “Land connected.” as the working brand promise.</li><li>Keep Singapore, the UK, the US, and Canada as explicit expansion hypotheses.</li></ul></details><a class="source" href="docs/MARKET_BRAND_DECISION.md">Full decision, calculations, and sources ↗</a></article>
+        <article class="doc"><span class="label">How we avoid expensive mistakes</span><h3>MVP architecture</h3><p>The storefront, checkout, supplier connection, payments, and founder tools begin as one manageable application with replaceable provider adapters.</p><details><summary>Explore the important decisions</summary><ul><li>One customer payment can create no more than one supplier order.</li><li>The review build uses test payments and demo fulfilment by default.</li><li>Live fulfilment stays off until durable controls and recovery tools exist.</li><li>Vercel plus managed Postgres is the intended production shape.</li></ul></details><a class="source" href="docs/MVP_ARCHITECTURE.md">Full architecture material ↗</a></article>
+        <article class="doc"><span class="label">How two founders avoid babysitting it</span><h3>Operations model</h3><p>Routine support, monitoring, reconciliation, and reporting should happen automatically inside explicit limits. Humans retain sensitive decisions.</p><details><summary>Explore the important decisions</summary><ul><li>Automate Support Tiers 1–2; route sensitive or unresolved cases to human Tier 3.</li><li>Give founders previewable controls for content and simple design changes.</li><li>Alert founders only for actionable exceptions with evidence.</li><li>Automate reconciliation but require human approval for every refund.</li></ul></details><a class="source" href="docs/OPERATIONS_MODEL.md">Full operations material ↗</a></article>
+        <article class="doc"><span class="label">What can change without a rebuild</span><h3>Configuration</h3><p>Brand, launch market, destinations, prices, providers, and safety switches live in clear configuration. Credentials remain outside the code.</p><details><summary>Explore the important decisions</summary><ul><li>Brand and commercial defaults stay separate from integration code.</li><li>Demo, test-payment, and supplier modes use explicit switches.</li><li>Supplier writes are disabled separately and capped for experiments.</li><li>Credentials shared during development must be rotated before production.</li></ul></details><a class="source" href="docs/CONFIGURATION.md">Full configuration material ↗</a></article>
+      </div>
+    </section>
+
+    <section class="next">
+      <div class="heading"><p>Next founder decisions</p><h2>The handful of things that need us—not an agent.</h2></div>
+      <ol>
+        <li><strong>Confirm the working brand.</strong><span>Keep Omniroam for launch or begin a formal naming and trademark round.</span></li>
+        <li><strong>Approve the Australian test.</strong><span>Use the quantified thesis for 100 orders or 90 days, then compare real unit economics.</span></li>
+        <li><strong>Choose the production database.</strong><span>Provision managed Postgres before any live automatic order.</span></li>
+        <li><strong>Approve refund and escalation policy.</strong><span>Automation prepares evidence; one founder remains the decision-maker.</span></li>
+        <li><strong>Rotate credentials before launch.</strong><span>Development keys must not graduate into production.</span></li>
+      </ol>
+    </section>
+  </main>
+  <footer><strong>Omniroam founders’ briefing</strong><span>Public repository · no credentials · search indexing discouraged</span></footer>
+</body>
+</html>
