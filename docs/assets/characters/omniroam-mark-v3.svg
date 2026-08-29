@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-labelledby="title">
+  <title id="title">Omniroam</title>
+  <circle cx="24" cy="24" r="16.5" fill="none" stroke="#202431" stroke-width="7"/>
+  <path d="M12.8 15.2c5.7-6.1 14.2-7.7 21.4-3.9" fill="none" stroke="#FF675C" stroke-width="4.6" stroke-linecap="round"/>
+  <circle cx="37" cy="12" r="5.3" fill="#FFD66B" stroke="#202431" stroke-width="2.6"/>
+</svg>
