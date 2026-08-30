@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>30 August release evidence · Omniroam</title>
+  <link rel="stylesheet" href="manual.css">
+</head>
+<body>
+  <header><div class="wrap"><p class="kicker">Release evidence · 30 August 2026</p><h1>The controlled purchase path passed.</h1><p class="lede">This page records safe evidence only. Real QR codes, activation strings, recovery tokens, customer records and secret values are deliberately excluded.</p></div></header>
+  <main class="wrap">
+    <section><h2>Outcome</h2><div class="callout"><strong>Opn test payment → reserved eSIMAccess profile → protected delivery → live usage → opened email</strong><p>The test charged an Opn sandbox card in AUD, read the existing eSIMAccess test profile, stored the delivery for the current order, opened a private first-party order page, returned the live 100 MB balance and delivered the branded installation email to a real founder inbox. It did not purchase another eSIM.</p></div></section>
+    <section><h2>Proof by stage</h2><table><thead><tr><th>Stage</th><th>Result</th><th>Control checked</th></tr></thead><tbody>
+      <tr><td>Payment</td><td>Passed in Opn test mode</td><td>AUD amount and test-mode response verified before fulfilment</td></tr>
+      <tr><td>Supplier</td><td>Existing reserved profile retrieved</td><td>Supplier writes stayed off and no new purchase occurred</td></tr>
+      <tr><td>Persistence</td><td>Delivery row verified after insert</td><td>The reserved supplier order identifier was not claimed by the new checkout</td></tr>
+      <tr><td>Private delivery</td><td>QR, quick install, manual details and own guide rendered</td><td>One-use token exchanged for a short HTTP-only session and disappeared from the URL</td></tr>
+      <tr><td>Usage</td><td>0 MB used, 100 MB remaining</td><td>Dedicated signed supplier usage endpoint with safe fallback</td></tr>
+      <tr><td>Email</td><td>Sent and confirmed opened</td><td>First-party template and idempotent retry</td></tr>
+      <tr><td>Replay</td><td>Passed</td><td>No second charge, supplier order or email</td></tr>
+    </tbody></table></section>
+    <section><h2>Customer-facing evidence</h2><div class="grid two"><article class="card"><img src="assets/release-home.png" alt="Live Omniroam homepage showing the navy hero, plan navigation and character crew" style="width:100%;border-radius:18px"><h3>Live storefront</h3><p>The latest Vercel production deployment is ready. The site remains labelled as a demo while live sales are locked.</p></article><article class="card"><img src="assets/release-checkout.png" alt="Omniroam demo checkout showing the plan, AUD price, disclosures and consent choices" style="width:100%;border-radius:18px"><h3>Safe checkout shell</h3><p>The production screenshot contains no customer data. The real payment and eSIM retrieval were tested locally against the connected test services.</p></article></div></section>
+    <section><h2>Release and security checks</h2><ul><li>26 of 26 automated checks passed.</li><li>Next.js production build passed.</li><li>Secret scan passed across 189 text files.</li><li>Production dependency audit has no known vulnerabilities.</li><li>Cross-origin checkout was rejected with HTTP 403.</li><li>An oversized support request was rejected with HTTP 413.</li><li>An invalid recovery token was rejected with HTTP 400.</li><li>The internal alert route failed closed while disabled.</li><li>The GitHub release gate and Vercel deployment were checked after publication.</li></ul></section>
+    <section><h2>Still blocks public live sales</h2><ol><li>Production environment and protected keys.</li><li>Verified Opn and eSIMAccess webhooks, replay handling and reconciliation.</li><li>3-D Secure return and uncertain-payment recovery.</li><li>Fraud holds, chargeback handling and named human refund approval.</li><li>Verified goomniroam.com email sender and monitored support address.</li><li>Separate staff sign-in, access logs and operational drills.</li><li>Legal operator details and qualified Australian legal review.</li><li>Independent penetration testing before material scale.</li></ol></section>
+    <p><a class="button" href="../index.html">Back to the founders' control room →</a></p>
+  </main>
+</body>
+</html>
