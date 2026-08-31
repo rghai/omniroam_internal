@@ -36,3 +36,9 @@ A supplier change cannot usually be reduced to replacing an endpoint. Providers 
 - Normalise supplier webhooks into one fulfilment-event contract.
 - Add reconciliation jobs that compare Omniroam orders with the active supplier.
 - Prove a second adapter in a sandbox before relying on portability in production.
+
+## Current canary boundary
+
+The first real-purchase canary uses eSIMAccess behind the same provider contract. Checkout selects a founder-only Omniroam plan. Customers never choose or see the supplier. The registry resolves the configured supplier on the server, the private product map translates the Omniroam plan ID, and the adapter returns the same canonical fulfilment record used by email, recovery, QR display and usage lookup.
+
+The canary does not make portability proven. It proves that the customer journey is outside the eSIMAccess adapter. A second supplier implementation and contract-test run remain necessary evidence.

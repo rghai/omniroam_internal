@@ -17,7 +17,8 @@
         <h2>Transactional email</h2>
         <div class="callout"><strong>Omniroam sends the customer email.</strong><p>We do not rely on eSIMAccess's customer email. Resend carries an Omniroam template with plan details, a private installation link, setup steps, a data-only explanation and a warning not to delete an installed eSIM.</p></div>
         <p>The template includes HTML and plain text. Provider and database idempotency stop the same order email being sent twice during a retry. A real Gmail delivery test reached the recipient's mail server on 29 August 2026.</p>
-        <p>The production sender remains off because Resend reports goomniroam.com as not started. DNS authentication and a monitored reply inbox must be completed first.</p>
+        <p>The expired domain is no longer a dependency. The founder canary may use Resend's testing sender, which can deliver only to the Resend account email. Customer delivery waits for the next owned domain, DNS authentication and a monitored reply inbox.</p>
+        <p>New email remains readable when images are blocked. The private recovery address is plain text rather than a tracked link. It uses a URL fragment, which the browser removes before exchanging it for a short secure session.</p>
       </section>
       <section id="supplier">
         <h2>How supplier-proof is it?</h2>
@@ -37,9 +38,9 @@
       </section>
       <section id="vercel">
         <h2>One Vercel session at the end of the sprint</h2>
-        <p>The complete non-secret checklist is recorded in the source documentation. The practical order is: public settings, Opn test keys, eSIMAccess test settings, Neon, Resend, then one redeployment and one controlled end-to-end order.</p>
+        <p>The complete non-secret checklist is linked below. Keep public Production in demo mode. Configure the real canary only in a protected Preview, then run one controlled end-to-end order.</p>
         <div class="callout pale"><strong>Keep these off for now.</strong><p>GA and GTM, supplier writes, live Opn charges, automatic refunds, staff access and scheduled operations sweeps.</p></div>
-        <p>Cloudflare can wait. It does not block the MVP.</p>
+        <p><a class="button" href="vercel-checklist.html">Open the canary checklist →</a></p><p>Cloudflare can wait. It does not block the MVP.</p>
       </section>
     </div>
   </main>
