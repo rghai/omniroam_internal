@@ -31,6 +31,8 @@ Run `npm run qa:release`. GitHub Actions runs the same command on pull requests 
 
 Check at least one desktop viewport of 1,280 pixels or wider and one phone viewport between 360 and 430 pixels.
 
+Run `npm run qa:browser-mobile` against the deployed candidate for the automated 390 by 844 checks, then inspect at least one desktop screenshot and the affected flows manually.
+
 - Home page has meaningful content and no framework error overlay.
 - Browser console has no errors.
 - Every image completes with a non-zero natural width and height after scrolling through the page.
@@ -53,7 +55,7 @@ Check at least one desktop viewport of 1,280 pixels or wider and one phone viewp
 - Legal operator details, monitored inboxes and launch placeholders are checked before any production launch claim.
 - No credential, QR code, activation string, customer record or private founder contact is committed to GitHub or copied into release evidence.
 - Recovery links are treated as bearer credentials. They use no-referrer, noindex and no-store behaviour, and no unrelated third-party script loads on the token-bearing route.
-- New recovery links place the bearer credential in the URL fragment. The browser removes it before redemption and exchanges it for a 15-minute HTTP-only, same-site cookie.
+- New recovery links place the bearer credential in the URL fragment. The browser removes it before redemption, waits for a human click and exchanges it for a 24-hour HTTP-only, same-site cookie.
 - Installation emails show the private recovery address as plain text. The bearer credential must not be an HTML link that an email click-tracker can wrap.
 - The email remains readable with images blocked and includes an equivalent plain-text part.
 - The private delivery page retrieves live usage from eSIMAccess `/esim/usage/query` using the supplier transaction number, not the customer-visible order reference.
@@ -85,6 +87,29 @@ Every founder comment that changes the product creates or updates a row in the r
 | 31 Aug 2026 | Character crowding made the logo worse | Require the simple mark plus Omniroam lockup in the header and footer until founders approve a stronger master | Fixed and automated |
 | 31 Aug 2026 | Australia-first had not been justified with raw numbers | Publish official outbound-volume figures and describe Australia as a measured acquisition hypothesis rather than an objective winner | Fixed and documented |
 | 31 Aug 2026 | A real supplier test must use the cheapest exact package | Founder-only catalogue entry must remain Thailand, 100MB, seven days, US$0.30 and supplier writes require four independent gates | Active |
+| 9 Sep 2026 | An expired Telstra comparison remained visible after its review date | Homepage cache must refresh dated claims, and an automated boundary test must prove expiry at the end of the review window | Fixed and automated |
+| 10 Sep 2026 | Use `omniroam.vercel.app` as the founder MVP test environment instead of creating Preview | Record KG approval, keep Opn in test mode, restrict supplier writes to the exact canary and treat the arrangement as temporary until public launch preparation | Approved exception, active |
+| 10 Sep 2026 | Turn supplier writes on after topping up eSIMAccess | Require the Thailand 100MB plan gate, US$0.50 cap, fresh supplier price check, atomic fulfilment claim and immediate write shutoff after the single test | Passed on Production; writes restored off |
+| 10 Sep 2026 | Recent Git pushes did not reach Vercel | Require a Vercel-recognised commit identity and verify the resulting Production deployment, not only the Git push | Fixed and checked |
+| 10 Sep 2026 | Match eSIMAccess QR, quick-install, usage and guide functions without relying on its branded page | Require protected QR delivery, separate Apple and Android native links, manual activation, live usage and Omniroam’s guide. Permit only the HTTPS `p.qrsim.net` page as a labelled backup | Passed live canary; physical installation pending |
+| 10 Sep 2026 | Test cheaply across plans and countries | Use read-only catalogue and provider contract checks across countries. Limit the real canary to the approved Thailand 100MB plan and recheck its price before purchase | Active |
+| 10 Sep 2026 | Support may need cancellation, revocation and supplier-console access | Keep Tier 1 and Tier 2 read-only, require an audited human Tier 3 decision for cancellation, revocation and refunds, and treat supplier and customer refunds separately | Roadmap recorded, API proof pending |
+| 10 Sep 2026 | An activation credential was pasted into project chat | Do not visit, reproduce or store it. Treat that test profile as potentially compromised and ask a human to verify and revoke or replace it if it remains usable | Open, founder action required |
+| 10 Sep 2026 | eSIMAccess validates a new webhook with `CHECK_HEALTH` | Return HTTP 200 without changing an order, storing customer data or running fulfilment logic. Keep all business-event verification and replay controls unchanged | Fixed and automated |
+| 10 Sep 2026 | Opn sends every event to one static webhook URL | Acknowledge well-formed events that Omniroam does not use without changing state. Continue to re-read, match and deduplicate every supported payment-changing event | Fixed and automated |
+| 10 Sep 2026 | Recovery displayed internal token-handling language | Remove implementation wording from the customer page. Show only a quiet branded loading indicator with an accessible customer-facing label | Fixed and automated |
+| 10 Sep 2026 | Live fulfilment still exposed “Demo order”, “Opn test charge” and `test_fulfilled` | Show customer labels for order, payment, delivery and status. Keep provider and internal-state terminology out of checkout success and private delivery | Fixed and automated |
+| 10 Sep 2026 | Add Facebook as a customer sign-in option | Keep passwordless email magic link as the primary login. Treat Google, Apple, Facebook and LINE as optional secondary providers, each with separate app registration, redirect, account-linking and security tests | Approved direction; backlog |
+| 11 Sep 2026 | Publish a Global site without losing the Australian experience | Publish path-based `/global/en` and `/au/en` routes, prefer an explicit remembered choice over the IP suggestion and keep the selector available | Implemented; desktop and mobile checks passed |
+| 11 Sep 2026 | Prepare English, Spanish, French, Mandarin, Japanese, Korean and Thai | Keep only human-reviewed locales publishable. Do not expose draft or literal machine translations as finished customer copy | Architecture implemented; six translations pending |
+| 11 Sep 2026 | Run penetration and vulnerability checks before public releases, not every development edit | Run static secret scan and regression tests during development. Add the dynamic production security smoke and independent penetration test to the final release gate | Automated smoke added; independent test pending |
+| 11 Sep 2026 | Recovery links were consumed by scanners or expired too quickly | Require a human click before redemption, use a 24-hour private session and allow an exact order-and-email match to issue a fresh link without confirming whether an order exists | Fixed and automated |
+
+## Final public-release security gate
+
+Run `npm run security:dynamic` against the deployed release candidate after the ordinary release gate. It performs read-only page and header checks, rejects cross-origin mutations, verifies the eSIMAccess health response and checks that sensitive paths are not served. It must not create a customer, payment, support case or supplier order.
+
+An independent penetration test is still required before material public scale. The automated smoke test and internal review are not a penetration-test certificate.
 
 ### 30 August live supplier-read evidence
 
@@ -94,7 +119,7 @@ Every founder comment that changes the product creates or updates a row in the r
 - No supplier write, payment or account top-up occurred.
 - A separate bounded end-to-end test later passed an Opn sandbox payment, protected delivery, one-use recovery, live usage and first-party email using the same reserved eSIM. No new supplier order was created.
 - The real QR and activation details were inspected privately and excluded from screenshots, email evidence and public records.
-- Production customer-session verification remains open until the Vercel environment is configured for controlled Opn test mode.
+- Production customer-session verification passed on 10 September in controlled Opn test mode.
 
 ### 31 August canary catalogue evidence
 
@@ -103,6 +128,19 @@ Every founder comment that changes the product creates or updates a row in the r
 - The canary remains the cheaper US$0.30 plan.
 - No supplier order, payment, profile change or account top-up occurred.
 - The live package and price must be checked again immediately before the approved purchase.
+
+### 10 September live Production canary evidence
+
+- The package was rechecked immediately before purchase as Thailand, 100MB, seven days and US$0.30.
+- One Opn test payment created one eSIMAccess order. No retry or second purchase was submitted.
+- The profile reached `GOT_RESOURCE` and the customer page reported 100MB remaining.
+- QR, manual activation, Apple and Android actions, supplier backup page and Omniroam installation guide were present.
+- The recovery credential was removed from the address bar before redemption and no internal security-process copy was shown.
+- The installation email send completed without a server-side failure. Founder inbox receipt remains a recipient-side confirmation.
+- The profile was left unused for a physical installation check. This is a deliberate exception to the earlier cancellation exercise, not a refund decision.
+- Supplier writes were restored to off and the Production safety-state deployment reached READY.
+- Evidence excludes the QR, activation string, ICCID, recovery credential and customer record.
+- After the customer-label fix, the full release gate passed 45 of 45 checks, the secret scan passed across 113 text files and the production dependency audit returned zero known vulnerabilities.
 
 Add new feedback below these entries. Link it to a test, visual check, product invariant or explicit accepted limitation.
 

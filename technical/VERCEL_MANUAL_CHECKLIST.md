@@ -1,6 +1,6 @@
 # Vercel manual configuration checklist
 
-This is the single founder checklist for the Omniroam Vercel project as at 31 August 2026. Use a protected Vercel Preview deployment for the first real supplier canary. Keep the public Production deployment in demo mode.
+This is the single founder checklist for the Omniroam Vercel project as at 10 September 2026. By founder decision, `https://omniroam.vercel.app` is the temporary MVP test environment. Opn stays in test mode. A separate Preview environment is deferred until public launch preparation gives us a concrete reason to maintain one.
 
 Never paste secrets into GitHub, Notion, the founder dashboard or a screenshot. Add protected values only in Vercel Project Settings, then redeploy the affected environment once.
 
@@ -8,37 +8,37 @@ Never paste secrets into GitHub, Notion, the founder dashboard or a screenshot. 
 
 | Environment | Purpose | Checkout | Supplier writes |
 | --- | --- | --- | --- |
-| Production | Public working MVP at `https://omniroam.vercel.app` | Demo | Off |
-| Preview | Founder-only end-to-end canary | Opn test charge | One approved US$0.30 eSIM |
+| Production | Founder MVP at `https://omniroam.vercel.app` | Opn test charge | Off by default; enabled only for an approved canary |
+| Preview | Ordinary branch review only | Demo or no checkout | Off |
 | Development | Local engineering | Demo unless deliberately testing | Off |
 
-Turn on Vercel Deployment Protection for the canary Preview. Do not expose a supplier-writable build as the public Production site.
+The founder canary is visible on Production during this temporary test phase. Keep the exact-plan, price-cap, payment-mode and explicit supplier-write gates in place. Restore supplier writes to off immediately after each approved canary and redeploy.
 
 ## Production values
 
 | Variable | Value or action |
 | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | `https://omniroam.vercel.app` |
-| `NEXT_PUBLIC_CHECKOUT_MODE` | `demo` |
-| `NEXT_PUBLIC_FOUNDER_TEST_FLOW` | `false` |
-| `PAYMENT_PROVIDER` | `demo` |
-| `OPN_TEST_CHARGES_ENABLED` | `false` |
-| `ESIM_PROVIDER` | `demo` |
-| `ESIMACCESS_WRITE_ENABLED` | `false` |
-| `TRANSACTIONAL_EMAIL_ENABLED` | `false` unless a demo email is deliberately required |
+| `NEXT_PUBLIC_CHECKOUT_MODE` | `opn_test` |
+| `NEXT_PUBLIC_FOUNDER_TEST_FLOW` | `true` |
+| `PAYMENT_PROVIDER` | `opn` |
+| `OPN_TEST_CHARGES_ENABLED` | `true` |
+| `ESIM_PROVIDER` | `esimaccess` |
+| `ESIMACCESS_WRITE_ENABLED` | `true` during the explicitly approved founder test window. Only the exact Thailand 100MB test plan can write, and the US$0.50 cap remains enforced |
+| `TRANSACTIONAL_EMAIL_ENABLED` | `true` for the Resend account owner only |
 | `NEXT_PUBLIC_ANALYTICS_ENABLED` | `false` while analytics work is paused |
 | `NEXT_PUBLIC_GTM_ID` | Leave blank while analytics work is paused |
 | `LOG_LEVEL` | `warn` |
 
 Keep the current Australia and AUD defaults. These are acquisition-test defaults, not a permanent commitment to an Australia-only product.
 
-## Protected Preview for one real canary
+## Production founder canary
 
 ### Public build values
 
-| Variable | Preview value |
+| Variable | Production value |
 | --- | --- |
-| `NEXT_PUBLIC_SITE_URL` | Use the exact protected Preview URL after it exists, for example `https://<preview>.vercel.app` |
+| `NEXT_PUBLIC_SITE_URL` | `https://omniroam.vercel.app` |
 | `NEXT_PUBLIC_CHECKOUT_MODE` | `opn_test` |
 | `NEXT_PUBLIC_FOUNDER_TEST_FLOW` | `true` |
 | `NEXT_PUBLIC_DEFAULT_MARKET` | `AU` |
@@ -49,7 +49,7 @@ Keep the current Australia and AUD defaults. These are acquisition-test defaults
 
 ### Opn test payment
 
-| Variable | Preview value or action |
+| Variable | Production value or action |
 | --- | --- |
 | `PAYMENT_PROVIDER` | `opn` |
 | `NEXT_PUBLIC_OPN_PUBLIC_KEY` | Add the Opn test public key |
@@ -62,13 +62,13 @@ Use only an official Opn test card. The standard success card is `4242 4242 4242
 
 ### eSIMAccess canary
 
-| Variable | Preview value or action |
+| Variable | Production value or action |
 | --- | --- |
 | `ESIM_PROVIDER` | `esimaccess` |
 | `ESIMACCESS_API_BASE_URL` | Add the documented API base URL |
 | `ESIMACCESS_ACCESS_CODE` | Add as a protected server value |
 | `ESIMACCESS_SECRET_KEY` | Add as a protected server value |
-| `ESIMACCESS_WRITE_ENABLED` | `true` only for the protected canary Preview |
+| `ESIMACCESS_WRITE_ENABLED` | `true` for the current explicitly approved test window. Restore `false` before any unattended or public use |
 | `ESIMACCESS_EXPERIMENT_MAX_USD` | `0.50` |
 | `ESIM_PROVIDER_PRODUCT_MAP_JSON` | `{"esimaccess":{"qa-th-0.1-7":"TH_0.1_7"}}` |
 | `ESIM_PROVIDER_COST_MAP_JSON` | `{"esimaccess":{"qa-th-0.1-7":0.3}}` |
@@ -78,20 +78,20 @@ The supplier map was checked read-only against the live eSIMAccess package list 
 
 ### Database and protection
 
-| Variable | Preview value or action |
+| Variable | Production value or action |
 | --- | --- |
 | `DATABASE_URL` | Add the Neon pooled connection |
 | `DATABASE_URL_UNPOOLED` | Add the Neon direct migration connection |
 | `SECURITY_HASH_SECRET` | New random value of at least 32 bytes |
 | `ESIM_DATA_ENCRYPTION_KEY` | Base64 text representing exactly 32 random bytes |
-| `NEXT_PUBLIC_TURNSTILE_ENABLED` | `false` for the protected founder canary unless the widget is fully configured |
+| `NEXT_PUBLIC_TURNSTILE_ENABLED` | `false` for the founder canary unless the widget is fully configured |
 | `TURNSTILE_ENFORCED` | `false` for this canary. Turnstile is not required on checkout |
 
 Do not weaken same-origin checks, payload limits, idempotency or encrypted eSIM storage to make the canary pass.
 
 ### Transactional email for founder testing
 
-| Variable | Preview value or action |
+| Variable | Production value or action |
 | --- | --- |
 | `RESEND_API_KEY` | Add as a protected server value |
 | `RESEND_EMAIL_DOMAIN` | Leave blank while using Resend's testing sender |
@@ -119,21 +119,31 @@ No code change is required when a replacement domain is registered. Update these
 
 Add the new domain to Vercel, configure its DNS, add Resend SPF and DKIM records, then add a DMARC monitoring policy. Keep the Vercel URL working until the new domain is verified.
 
-## Before the founder tops up eSIMAccess
+## Provider dashboard webhook registration
 
-1. Apply the Preview values above and redeploy.
-2. Confirm the Preview is protected and shows the founder-only Thailand 100MB canary.
+- In Opn test mode, open `https://dashboard.omise.co/test/webhooks` and set the account's single webhook endpoint to `https://omniroam.vercel.app/api/webhooks/opn`. Opn sends all test events to this endpoint by default.
+- In the eSIMAccess developer console, set the account notification URL to `https://omniroam.vercel.app/api/webhooks/esimaccess`. The receiver answers the first-time `CHECK_HEALTH` test without running order logic.
+- Send provider test notifications and confirm the durable event is processed once. Replaying the same event must not change the order twice.
+- When the domain changes, update both provider endpoints after the new hostname is live.
+
+These registrations do not require another Vercel environment variable. Keep Opn in test mode. Do not configure either URL in a live payment account until the public-sales gate is approved.
+
+## Controlled supplier-canary procedure
+
+1. Apply the Production values above and redeploy.
+2. Confirm Production shows the founder-only Thailand 100MB canary and clearly identifies Opn test mode.
 3. Run the release gate and a dry checkout with supplier writes still off.
 4. Confirm the live supplier package slug and price are still Thailand, 100MB, seven days and US$0.30.
-5. Turn on the supplier-write flag in Preview only and redeploy.
+5. Turn on the Production supplier-write flag and redeploy.
 6. Top up only enough for the single approved canary.
 7. Use the Opn test card and capture non-sensitive evidence of payment, supplier order, delivery email, QR display, installation guide and usage lookup.
 8. Replay the same checkout request and confirm there is no second charge, supplier order or email.
-9. Turn the supplier-write flag off again immediately after the test.
+9. Turn the Production supplier-write flag off again immediately after the test and redeploy.
 
 ## Still blocks public live sales
 
-- Opn and eSIMAccess webhook authentication and replay handling
+- Production Opn event handling, provider re-read verification and replay handling
+- eSIMAccess webhook contract confirmation, including supplier-supported authenticity controls; current events are matched to a stored supplier order and re-read from the signed supplier API before any state change
 - payment, supplier and email reconciliation
 - 3-D Secure return and uncertain-payment recovery
 - fraud holds, chargeback operations and human refund approval

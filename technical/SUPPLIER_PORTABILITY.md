@@ -11,7 +11,7 @@ Each supplier adapter must translate its API into these operations:
 3. retrieve an order
 4. retrieve usage
 
-The adapter returns one canonical eSIM record with a provider order ID, status, activation details, QR location, ICCID, APN and optional customer page.
+The adapter returns one canonical eSIM record with a provider order ID, status, activation details, QR location, ICCID, APN and optional supplier-hosted backup page. Omniroam derives the Apple and Android native installation links from the canonical activation string, so those customer actions do not depend on a supplier-branded page.
 
 ## What changes when a supplier changes
 
@@ -32,7 +32,7 @@ A supplier change cannot usually be reduced to replacing an endpoint. Providers 
 
 - Add a provider contract test suite that every real adapter must pass.
 - Replace the legacy supplier_slug database name with a neutral product-reference table during a planned migration.
-- Add capability flags for top-up, phone-number plans, cancellation and refunds.
+- Add capability flags for top-up, phone-number plans, cancellation, revocation and supplier refunds.
 - Normalise supplier webhooks into one fulfilment-event contract.
 - Add reconciliation jobs that compare Omniroam orders with the active supplier.
 - Prove a second adapter in a sandbox before relying on portability in production.
@@ -42,3 +42,14 @@ A supplier change cannot usually be reduced to replacing an endpoint. Providers 
 The first real-purchase canary uses eSIMAccess behind the same provider contract. Checkout selects a founder-only Omniroam plan. Customers never choose or see the supplier. The registry resolves the configured supplier on the server, the private product map translates the Omniroam plan ID, and the adapter returns the same canonical fulfilment record used by email, recovery, QR display and usage lookup.
 
 The canary does not make portability proven. It proves that the customer journey is outside the eSIMAccess adapter. A second supplier implementation and contract-test run remain necessary evidence.
+
+## Lifecycle operations boundary
+
+Cancellation and revocation are not interchangeable:
+
+- Cancellation is for an eligible unused profile. The operator must verify supplier status before submitting it. A supplier credit and a customer payment refund are separate records and separate decisions.
+- Revocation permanently disables a profile and may not return supplier credit. It always requires a human decision and an audit note.
+- Tier 1 and Tier 2 automation may retrieve status, usage and diagnostics. It may prepare a cancellation recommendation, but it must not cancel, revoke or refund.
+- Tier 3 may use the supplier console during the MVP. A later internal tool must still call the provider adapter rather than embed eSIMAccess logic in customer or support code.
+
+The next adapter revision will add explicit capability declarations and human-authorised lifecycle methods after the exact eSIMAccess request and response contracts have been verified from its current API documentation. Placeholder methods must not be presented as working controls.

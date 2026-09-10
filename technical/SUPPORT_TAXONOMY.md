@@ -24,6 +24,16 @@ Tier 1 can provide compatibility checks, setup instructions, recovery guidance a
 
 Automation may suggest the next check, collect safe diagnostic details and draft a reply. It must not ask for card data, activation codes or full ICCIDs. It must not approve a refund or create another supplier order.
 
+## Supplier operations during the MVP
+
+Tier 1 automation may show the customer their protected QR code, native iPhone or Android install action, manual activation fields, current usage and Omniroam installation guide. Tier 2 automation may retrieve supplier status and usage, compare those readings with the order record and prepare a diagnostic summary.
+
+Tier 3 staff use the eSIMAccess partner console when an order needs manual inspection. Staff may review fulfilment state, confirm whether a profile remains unused, and prepare the correct next action. The console is an internal tool and its supplier identity must not appear in customer-facing copy.
+
+Cancelling an eligible unused eSIM, revoking a profile or refunding a customer requires an authorised person. Before acting, the operator records the Omniroam order, current eSIM and SM-DP+ statuses, reason, requested action and approver. After acting, the operator records the supplier result and verifies the expected balance or state change. A supplier cancellation does not automatically authorise or complete an Opn refund.
+
+Revocation is reserved for confirmed fraud, compromise or another documented case where permanently disabling the eSIM is necessary. It is not a substitute for cancelling an unused order.
+
 ## Launch work still required
 
 - Connect a monitored support inbox and reply delivery.
@@ -32,3 +42,5 @@ Automation may suggest the next check, collect safe diagnostic details and draft
 - Publish device-specific help articles with reviewed screenshots.
 - Agree service hours, named Tier 3 owners and supplier escalation contacts.
 - Rehearse one case from every category before live sales.
+- Verify eSIMAccess cancellation with one unused test profile only after founder approval, then confirm the supplier balance change.
+- Keep revocation as a manual Tier 3 action until a reviewed, audited and separately approved API workflow exists.

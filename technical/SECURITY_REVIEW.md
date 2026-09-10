@@ -1,17 +1,17 @@
 # Omniroam security review
 
-Reviewed 31 August 2026. This is an internal threat-model, static-control, dependency and regression review. It is not an independent penetration-test certificate.
+Reviewed 10 September 2026. This is an internal threat-model, static-control, dependency and regression review. It is not an independent penetration-test certificate.
 
 ## Launch verdict
 
-Controlled testing can continue. The code now contains a founder-only canary that exactly matches the Thailand 100MB, seven-day, US$0.30 supplier package. It is restricted to Opn test mode, a protected founder build and an explicit supplier-write switch. No canary order has been placed. Public live sales remain blocked until the production environment, verified webhooks, reconciliation, 3-D Secure return, fraud controls and separate staff identity are complete.
+Controlled founder testing can continue. On 10 September the live Vercel MVP passed one Opn test payment and created one Thailand 100MB, seven-day eSIMAccess profile at US$0.30. The private page returned a real QR code, manual details, Apple and Android installation actions, supplier backup page and a live 100MB remaining reading. The recovery credential disappeared from the address bar before redemption. Supplier writes were then switched off and Production was redeployed. Public live sales remain blocked until verified webhook authenticity, reconciliation, 3-D Secure return, fraud controls, a verified sender and separate staff identity are complete.
 
 ## Controls implemented
 
 - Same-origin checks and bounded JSON on public mutation routes.
 - Durable, privacy-preserving rate-limit buckets.
 - Server-side Turnstile verification plumbing on support, privacy and recovery forms.
-- One-use recovery token exchange into a 15-minute HTTP-only, same-site session.
+- One-use recovery token exchange into a 24-hour HTTP-only, same-site session after a deliberate human click.
 - New recovery credentials travel in the URL fragment rather than the request path. The browser removes the fragment before redeeming it.
 - Installation email presents the private recovery address as plain text, so an email provider cannot wrap the bearer credential in a click-tracking redirect.
 - No-referrer, noindex and no third-party script loading on private delivery routes.
@@ -37,16 +37,30 @@ Controlled testing can continue. The code now contains a founder-only canary tha
 - Replay: the same checkout request returned the completed order without a second charge, eSIM order or email.
 - Sensitive evidence: no live QR code, activation string, token or customer record was copied to GitHub, Notion or the public dashboard.
 
+## 10 September Production canary evidence
+
+- The live catalogue recheck confirmed the exact Thailand 100MB, seven-day product at US$0.30 before purchase.
+- One Opn test charge completed and one new supplier order reached `GOT_RESOURCE`.
+- The private delivery page showed the real QR code, native installation actions, backup supplier page, manual activation section and 100MB remaining.
+- The recovery fragment was removed before the private page loaded. The former internal token-handling message did not appear.
+- The checkout returned no installation-email failure. Resend accepted the send from the configured testing sender. Recipient-side inbox confirmation remains with the founder because this browser session has no Gmail access.
+- The profile remains unused for the founder’s physical-device installation test. It was not cancelled or revoked.
+- `ESIMACCESS_WRITE_ENABLED` was restored to `false` and Production was redeployed after the one supplier order.
+- Activation credentials, QR content and the recovery credential were excluded from repository, Notion and public dashboard evidence.
+
 ## Production-safe dynamic checks
 
-Run against `https://omniroam.vercel.app` on 30 August 2026:
+Run against `https://omniroam.vercel.app` again on 11 September 2026:
 
 - Cross-origin checkout mutation rejected with HTTP 403.
 - Oversized support payload rejected with HTTP 413.
 - Invalid recovery token rejected with HTTP 400 and a non-sensitive error reference.
 - Unauthenticated internal alert sweep failed closed because the feature is disabled.
 - HTTPS, HSTS, frame denial, MIME sniffing protection, permissions policy, referrer policy and content security policy were present.
-- The prior production deployment was READY. The current local regression suite passes 28 of 28 checks and the production build passes.
+- Sensitive `/.env` and `/.git/config` paths returned HTTP 404.
+- The eSIMAccess `CHECK_HEALTH` request returned HTTP 200 without business processing, and an unsupported event returned HTTP 400.
+- The current Production deployment is READY. The current regression suite passes 50 of 50 checks, the production build passes and the dynamic security smoke passes.
+- Mobile browser regression passed nine live routes at 390 by 844 with no horizontal overflow, broken image, framework overlay or flagged internal wording.
 
 ## P0 before live sales
 
@@ -66,7 +80,7 @@ Run against `https://omniroam.vercel.app` on 30 August 2026:
 - Turnstile enforcement is off until production secrets and hostnames are configured.
 - A public founder dashboard can hold non-secret progress only. Private approvals and customer data belong in access-controlled systems.
 - Resend's testing sender can deliver only to the Resend account email. It is not a customer-delivery setup.
-- Old recovery emails that contain a query-string token remain redeemable for compatibility. The browser clears that token immediately. New emails use fragment credentials.
+- Old recovery emails that contain a query-string token remain redeemable for compatibility. The browser clears that token immediately. New emails use fragment credentials and wait for a human click before redemption.
 
 ## Live eSIMAccess usage evidence
 
